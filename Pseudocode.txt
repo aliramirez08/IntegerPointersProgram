@@ -1,0 +1,43 @@
+BEGIN
+
+FUNCTION getValidInteger(prompt):
+    LOOP FOREVER:
+        DISPLAY prompt
+        READ input
+        IF input is an integer:
+            RETURN input
+        ELSE:
+            DISPLAY "Invalid input. Please enter an integer."
+            CLEAR input buffer
+    END LOOP
+END FUNCTION
+
+// Main program starts
+DECLARE integer a, b, c
+
+a ← getValidInteger("Enter first integer: ")
+b ← getValidInteger("Enter second integer: ")
+c ← getValidInteger("Enter third integer: ")
+
+// Allocate dynamic memory using smart pointers
+CREATE unique_ptr ptrA that holds value a
+CREATE unique_ptr ptrB that holds value b
+CREATE unique_ptr ptrC that holds value c
+
+// Display variable values
+DISPLAY "Values of variables:"
+DISPLAY a, b, c
+
+// Display values from dynamic memory
+DISPLAY "Values from dynamic memory using smart pointers:"
+DISPLAY *ptrA, *ptrB, *ptrC
+
+// Display memory addresses
+DISPLAY "Memory addresses:"
+DISPLAY address of a and address stored in ptrA
+DISPLAY address of b and address stored in ptrB
+DISPLAY address of c and address stored in ptrC
+
+DISPLAY "Smart pointers automatically handle memory cleanup."
+
+END
